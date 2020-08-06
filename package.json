@@ -6,10 +6,10 @@
   "main": "lib/index.js",
   "bin": "lib/bin.js",
   "scripts": {
-    "pre-commit": "git-branch-is --not main && yarn test",
+    "pre-commit": "(git-branch-is --not main || (set -u && echo $ALLOWMAIN)) && yarn test",
     "test": "tsc --noEmit",
     "build": "tsc",
-    "docs": "typedoc --theme markdown --readme none --mode file --excludeNotExported --includeVersion --out docstemp && rm README.md ; concat-md docstemp > README.md && rm -rf docstemp",
+    "docs": "typedoc --theme markdown --readme none --mode file --excludeNotExported --includeVersion --out docstemp && commanderdoc markdown lib/bin.js -o docstemp/__cli.md --cli-name `npx jq -r .name package.json` && rm README.md ; concat-md docstemp > README.md && rm -rf docstemp",
     "prepublishOnly": "yarn build && yarn docs && git commit README.md -m \"docs: updating docs\" && git push"
   },
   "repository": {
@@ -26,11 +26,10 @@
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
     "@types/node": "^14.0.27",
+    "commanderdoc": "^0.1.4",
     "concat-md": "^0.3.5",
     "git-branch-is": "^4.0.0",
     "husky": "^4.2.5",
-    "jq": "^1.7.2",
-    "ts-node": "^8.10.2",
     "typedoc": "^0.17.8",
     "typedoc-plugin-markdown": "^2.4.0",
     "typescript": "^3.9.7"
