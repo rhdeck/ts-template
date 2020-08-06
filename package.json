@@ -39,6 +39,7 @@
     "lib"
   ],
   "dependencies": {
-    "commander": "^6.0.0"
+    "commander": "^6.0.0",
+    "install-peers-cli": "^2.2.0"
   }
 }
