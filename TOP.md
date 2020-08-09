@@ -1,6 +1,3 @@
-
-<a name="readmemd"></a>
-
 Template for making easy-to-work-with tempates
 
 # ts-template
@@ -31,12 +28,3 @@ Template for making easy-to-work-with tempates
 I made a deliberate choice to change the primary branch from `master` to `main` for reasons that are obvious to some. This repository endeavors to make that just automatic.
 
 PRs and feedback welcome via GitHub issues.
-
-
-<a name="_librarymd"></a>
-
-[template - v1.0.0](#readmemd)
-
-# template - v1.0.0
-
-

@@ -8,8 +8,8 @@
   "scripts": {
     "pre-commit": "yarn test",
     "test": "tsc --noEmit",
-    "build": "tsc",
-    "docs": "typedoc --theme markdown --readme none --mode file --excludeNotExported --includeVersion --out docstemp && rm README.md ; concat-md docstemp > README.md && rm -rf docstemp",
+    "build": "tsc && chmod +x lib/bin.js",
+    "docs": "typedoc --theme markdown --readme none --mode file --excludeNotExported --includeVersion --out docstemp && rm README.md ; mv docstemp/README.md docstemp/_library.md && cp TOP.md docstemp/README.md ; concat-md docstemp > README.md && rm -rf docstemp",
     "prepublishOnly": "yarn build && yarn docs && git commit README.md -m \"docs: updating docs\" && git push"
   },
   "repository": {
@@ -39,6 +39,7 @@
     "lib"
   ],
   "dependencies": {
-    "commander": "^6.0.0"
+    "commander": "^6.0.0",
+    "commanderdoc": "^0.1.11"
   }
 }
