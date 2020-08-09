@@ -40,3 +40,11 @@ PRs and feedback welcome via GitHub issues.
 # template - v1.0.0
 
 
+
+
+<a name="__climd"></a>
+
+# Usage
+```bash
+template [options]
+```
