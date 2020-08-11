@@ -9,7 +9,10 @@
     "pre-commit": "(git-branch-is --not main || (set -u && echo $ALLOWMAIN)) && yarn test",
     "test": "tsc --noEmit",
     "build": "tsc && chmod +x lib/bin.js",
-    "docs": "typedoc --theme markdown --readme none --mode file --excludeNotExported --includeVersion --out docstemp && commanderdoc markdown lib/bin.js -o docstemp/__cli.md --cli-name \"npx `jq -r .name package.json`\" && rm README.md ; mv docstemp/README.md docstemp/_library.md && cp TOP.md docstemp/README.md ; concat-md docstemp > README.md && rm -rf docstemp",
+    "docs:bin": "(commanderdoc markdown lib/bin.js -o docstemp/__cli.md --cli-name \"npx `jq -r .name package.json`\") ; ",
+    "docs:lib": "typedoc --theme markdown --readme none --mode file --excludeNotExported --includeVersion --out docstemp &&  && rm README.md ; mv docstemp/README.md docstemp/_library.md",
+    "docs:compile": "cp TOP.md docstemp/README.md ; concat-md docstemp > README.md && rm -rf docstemp",
+    "docs": "yarn docs:bin && yarn docs:lib && yarn docs:compile",
     "prepublishOnly": "yarn build && yarn docs && git commit README.md -m \"docs: updating docs\" && git push"
   },
   "repository": {
