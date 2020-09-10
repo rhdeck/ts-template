@@ -41,7 +41,6 @@ const validate_npm_package_name_1 = __importDefault(require("validate-npm-packag
     p.name = name;
     p.private = isPrivate;
     //#endregion
-    console.log(p);
-    //   writeFileSync(packagePath, JSON.stringify(p, null, 2));
+    fs_1.writeFileSync(packagePath, JSON.stringify(p, null, 2));
 })();
 //# sourceMappingURL=setup.js.map
