@@ -37,7 +37,5 @@ import validatePackage from "validate-npm-package-name";
   p.name = name;
   p.private = isPrivate;
   //#endregion
-  console.log(p);
-
-  //   writeFileSync(packagePath, JSON.stringify(p, null, 2));
+  writeFileSync(packagePath, JSON.stringify(p, null, 2));
 })();
